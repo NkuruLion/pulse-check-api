@@ -7,21 +7,6 @@ Each monitor has a timeout window, and if no heartbeat arrives before the timer 
 
 I attachache the flow chart file above
 
-
-```mermaid
-flowchart TD
-    A[Client] -->|POST /monitors| B[MonitorController]
-    A -->|POST /monitors/{id}/heartbeat| B
-    A -->|POST /monitors/{id}/pause| B
-
-    B --> C[(In-memory Monitor Map)]
-    B --> D[TimerService]
-
-    D -->|start/reset/cancel| E[(In-memory Timer Map)]
-    D -->|timeout expires| F[AlertService]
-    F --> G[Console Alert Output]
-```
-
 ## Setup Instructions
 
 ### Prerequisites
